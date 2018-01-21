@@ -7,7 +7,7 @@ set -e
 #  the release.  If you're running manually, this command should get you to
 #  the same place:
 #
-#    ./gradlew buildBinaries release --PcrossCompile=true
+#    ./gradlew release
 #
 #  Also at this point, you should already have incubator-openwhisk pulled down
 #  from gradle in the parent directory, using a command such as:
@@ -69,8 +69,7 @@ $ANSIBLE_CMD openwhisk.yml -e openwhisk_cli_home=$TRAVIS_BUILD_DIR
 
 # Copy the binary generated into the OPENWHISK_HOME/bin, so that the test cases will run based on it.
 # TODO - if the ansible above were correctly configured, this wouldn't be necessary
-mkdir -p $OPENWHISK_HOME/bin
-cp -f $TRAVIS_BUILD_DIR/bin/wsk $OPENWHISK_HOME/bin
+cp -f $TRAVIS_BUILD_DIR/build/wsk $OPENWHISK_HOME/bin
 
 # Run the test cases under openwhisk to ensure the quality of the binary.
 cd $TRAVIS_BUILD_DIR
