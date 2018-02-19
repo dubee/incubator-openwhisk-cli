@@ -346,7 +346,6 @@ var activationPollCmd = &cobra.Command{
 		fmt.Printf(wski18n.T("Polling for activation logs\n"))
 		whisk.Verbose("Polling starts from %s\n", time.Unix(pollSince/1000, 0))
 		localStartTime := time.Now()
-
 		// Polling loop
 		for {
 			if Flags.activation.exit > 0 {
